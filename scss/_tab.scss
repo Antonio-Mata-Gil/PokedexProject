@@ -1,0 +1,30 @@
+.buttons-tabs{
+    margin: auto;
+    text-align: center;
+    padding-top: 75px;
+    padding-bottom: 0px;
+    transform: skewX(-20deg);
+}
+.button-tab{
+    background-color: white;
+    padding: 15px 50px 15px 50px;
+    border: 0px;
+    margin-right: -9px;
+    box-shadow: 5px 5px 8px 1px rgba(0, 0, 0, 0.501);
+    font-size: $font-size-16;
+    
+    
+}
+.button-tab:hover{
+    background-color: black;
+    color: white;
+}
+
+@media (max-width:670px){
+    .button-tab{
+        width: 80% ;
+        margin-right: -25px;
+    }
+}
+
+

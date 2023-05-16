@@ -1,0 +1,27 @@
+$primary-color-red: #DD313D;
+$secundary-color-red: hsl(356, 66%, 45%);
+$font-size-20: 20px;
+$font-size-16: 16px;
+
+
+
+@import "header";
+@import "searcher";
+@import "tab";
+@import "pokedex";
+
+body{
+    margin: 0%;
+    box-sizing: border-box;
+   overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-image: url(../img/fondo.png);
+    
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;    
+    background-color: $primary-color-red;
+}
+
+

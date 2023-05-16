@@ -1,0 +1,53 @@
+form{
+    margin: auto;
+    text-align: center;
+    transform: skew(-20deg);
+    
+
+    
+
+    
+    
+    .input-text{
+        background-color: white;
+        border: 0px;
+        padding: 15px;
+        width: 25%;
+        margin-right: -5px;
+        font-size: $font-size-20;
+        padding-left: 50px;
+        box-shadow: 8px 8px 10px 1px rgba(0, 0, 0, 0.501);
+        z-index: 2;
+        
+        
+    }
+    .input-text::placeholder {
+        transform: skewX(20deg);
+      }
+      
+    .button-search{
+        background-color: black;
+        border: 0px;
+        padding: 15px;
+        width: 9%;
+        color: white;
+        font-size: $font-size-20; 
+        box-shadow: 9px 8px 10px 1px rgba(0, 0, 0, 0.501);
+        z-index: 1;
+
+    }
+   
+}
+
+@media (max-width:1080px){
+    .button-search{
+        width: 15% !important;
+    }
+}
+
+@media (max-width:720px){
+    .button-search{
+        width: 25% !important;
+    }
+}
+
