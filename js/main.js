@@ -14,32 +14,56 @@ const getPokemon = async () => {
   const url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151";
   const resp = await fetch(url);
   const data = await resp.json();
+ 
 
   const pokemonData = data.results.map((pokemon) => ({
     url: pokemon.url,
     name: pokemon.name,
   }));
-
+  
   for (const pokemonItem of pokemonData) {
     const response = await fetch(pokemonItem.url);
     const responseJson = await response.json();
+    
+    function check(array1, array2) {
+      for (let i = 0; i < array1.length; i++) {
+        const id = array1[i].id;
+        const valor = array1[i].fav;
+    
+        for (let j = 0; j < array2.length; j++) {
+          if (array2[j].id === id) {
+            array2[j].fav = valor;
+            
+          }
+        }
+      }
+    }
+    
+  
 
     pokemon.push({
       id: responseJson.id,
       name: responseJson.name,
       image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${responseJson.id}.png`,
       type: responseJson.types.map((type) => type.type.name),
-      fav: false,
-    });
+      fav: check(catchAll, pokemon),
+    });    
   }
 
+  
+
   renderPokemon(pokemon);
-  notcatch = [...pokemon];
+  if (notcatch.length === 0){
+    notcatch = [...pokemon];
+  } 
 };
+
 
 const renderPokemon = (pokemon) => {
   let html = "";
+  
   for (const poke of pokemon) {
+    console.log(poke.fav);
     const { id, name, image, type, fav } = poke;
     let pokeId = id.toString();
     if (pokeId.length === 1) {
@@ -90,16 +114,19 @@ const renderPokemon = (pokemon) => {
         pokemon[index].fav = false;
         notcatch.push(pokemon[index]);
         catchAll = catchAll.filter((e) => e.id !== poke.id);
+     
         console.log(catchAll);
         console.log(notcatch);
       } else {
         pokemon[index].fav = true;
         catchAll.push(pokemon[index]);
         notcatch = notcatch.filter((e) => e.id !== poke.id);
+        
         console.log(catchAll);
         console.log(notcatch);
       }
-
+      localStorage.setItem("catchPokemon" ,JSON.stringify(catchAll))
+      localStorage.setItem("notcatchPokemon", JSON.stringify(notcatch));
       renderPokemon(pokemon);
       
       
@@ -120,9 +147,18 @@ const main = async () => {
     event.preventDefault();
     searchPokemon();
   });
+  const getLocal = JSON.parse(localStorage.getItem("catchPokemon"))
+  const getLocalNo = JSON.parse(localStorage.getItem("notcatchPokemon"))
+  if(getLocalNo){
+    notcatch = getLocalNo;
+  }
+  if(getLocal){
+    catchAll = getLocal;
+  }
 
   await getPokemon();
 };
+
 
 document.addEventListener("DOMContentLoaded", main);
 
