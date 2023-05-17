@@ -63,7 +63,7 @@ const renderPokemon = (pokemon) => {
   let html = "";
   
   for (const poke of pokemon) {
-    console.log(poke.fav);
+   
     const { id, name, image, type, fav } = poke;
     let pokeId = id.toString();
     if (pokeId.length === 1) {
@@ -115,15 +115,12 @@ const renderPokemon = (pokemon) => {
         notcatch.push(pokemon[index]);
         catchAll = catchAll.filter((e) => e.id !== poke.id);
      
-        console.log(catchAll);
-        console.log(notcatch);
+        
       } else {
         pokemon[index].fav = true;
         catchAll.push(pokemon[index]);
         notcatch = notcatch.filter((e) => e.id !== poke.id);
         
-        console.log(catchAll);
-        console.log(notcatch);
       }
       localStorage.setItem("catchPokemon" ,JSON.stringify(catchAll))
       localStorage.setItem("notcatchPokemon", JSON.stringify(notcatch));
