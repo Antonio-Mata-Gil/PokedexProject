@@ -112,7 +112,7 @@ form .button-search {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 45%;
+  width: 50%;
   padding-bottom: 35px;
 }
 .container-secundary .type-container {
