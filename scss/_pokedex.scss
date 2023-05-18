@@ -48,13 +48,16 @@
         margin-bottom: 10px;
     }
     .type{
-        max-width: 35%;
+        max-width: 40%;
         margin-right: 2%;
         margin-top: -15px;
     }
     h2{
         font-size: 36px;
         text-align: left;
+    }
+    h2:first-letter{
+        text-transform: uppercase;
     }
 }
 .container-number{
@@ -92,20 +95,31 @@
     }
     h3{
         transform: skewX(20deg);
-        font-size: 1.8em;
-        margin: 0%;
-        
-        
+        font-size: 1.6em;
+        margin: 0%;   
     }
+
 }
 
 @media (max-width:1080px) {
     .pokedex-container-primary{
         width: 45%;
     }
+    .container-secundary{
+        h2{
+            font-size: 29px;
+            text-align: left;
+        }
+
+    }
+   
 }
 @media (max-width:720px) {
     .pokedex-container-primary{
         width: 90%;
+    }
+    h2{
+        font-size: 29px;
+        text-align: left;
     }
 }
